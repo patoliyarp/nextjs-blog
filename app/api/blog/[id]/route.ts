@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const JSON_SERVER_URL = process.env.JSON_SERVER_URL || "http://localhost:8000";
+const JSON_SERVER_URL =
+  process.env.JSON_SERVER_URL || "https://jsonserver-eight-self.vercel.app";
 
 export async function GET(
   request: Request,
@@ -11,10 +12,7 @@ export async function GET(
     const res = await fetch(`${JSON_SERVER_URL}/blog/${id}`);
     if (!res.ok) {
       if (res.status === 404) {
-        return NextResponse.json(
-          { error: "Blog not found" },
-          { status: 404 },
-        );
+        return NextResponse.json({ error: "Blog not found" }, { status: 404 });
       }
       throw new Error(`JSON Server responded with status ${res.status}`);
     }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const JSON_SERVER_URL = process.env.JSON_SERVER_URL || "http://localhost:8000";
+const JSON_SERVER_URL =
+  process.env.JSON_SERVER_URL || "https://jsonserver-eight-self.vercel.app";
 
 export async function GET() {
   try {
@@ -22,11 +23,13 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const data = await request.json();
+    console.log("this is post");
     const res = await fetch(`${JSON_SERVER_URL}/blog`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
+    console.log("res of post", res);
     if (!res.ok) {
       throw new Error(`JSON Server responded with status ${res.status}`);
     }
