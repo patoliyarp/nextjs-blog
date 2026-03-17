@@ -6,7 +6,7 @@ import { useAuth } from "@/context/AuthProvider";
 
 export default function Login() {
   const { login } = useAuth();
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -23,9 +23,8 @@ export default function Login() {
     }),
     onSubmit: (values) => {
       try {
-        // Optional: Add a check here like if(values.password !== '12345678') throw error
         login(values.email);
-        setError(null);
+        setError("");
       } catch (err) {
         setError("Invalid credentials");
       }
