@@ -13,7 +13,10 @@ async function PostDetail({ params }: PageProps) {
   let post;
 
   if (Number(id) <= 100) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { cache: "no-store" });
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      { cache: "no-store" },
+    );
     if (!res.ok) {
       return (
         <div className="min-h-screen flex items-center justify-center">
@@ -23,7 +26,9 @@ async function PostDetail({ params }: PageProps) {
     }
     post = await res.json();
   } else {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    const baseUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ||
+      "https://nextjs-blog-ten-gamma-33.vercel.app";
     const res = await fetch(`${baseUrl}/api/blog/${id}`, { cache: "no-store" });
     if (!res.ok) {
       return (
