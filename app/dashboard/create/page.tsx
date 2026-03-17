@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import PostForm from "@/app/components/PostForm";
 import Link from "next/link";
 import type { Post } from "@/types/type";
-
+import DOMPurify from "dompurify";
 export default function CreatePostPage() {
   const { user } = useAuth();
   const router = useRouter();
@@ -14,11 +14,15 @@ export default function CreatePostPage() {
 
     try {
       const id = Date.now().toString();
+      const cleanBody = DOMPurify.sanitize(values.body);
+      const cleanTitle = DOMPurify.sanitize(values.title);
       const newPost: Post = {
         id,
         userId: Number(id),
-        title: values.title,
-        body: values.body,
+        // title: values.title,
+        // body: values.body,
+        title: cleanTitle,
+        body: cleanBody,
         author: user.email,
         isUserPost: true,
       };

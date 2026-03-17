@@ -19,7 +19,7 @@ function BlogCard({ id, title, body }: Post) {
                 </p>
               </div>
               <Link href={`/blogs/${id}`}>
-                <div className="text-primary-text px-4 py-1.5 rounded-lg text-sm bg-primary-200 flex justify-center items-center">
+                <div className="text-primary-text  px-4 py-1.5 rounded-lg text-sm bg-primary-100 flex justify-center items-center">
                   view
                 </div>
               </Link>

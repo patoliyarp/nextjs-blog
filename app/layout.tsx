@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { AuthProvider } from "@/context/AuthProvider";
+import { WebVitals } from "./components/web-vitels";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // <WebVitals />
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

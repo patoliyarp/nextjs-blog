@@ -19,7 +19,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const userEmail = request.cookies.get("user_session")?.value;
   const { pathname } = request.nextUrl;
 
